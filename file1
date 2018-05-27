@@ -1,0 +1,67 @@
+17:46:03.758615 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 0, length 64
+17:46:03.758670 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 0, length 64
+17:46:04.758479 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 1, length 64
+17:46:04.758513 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 1, length 64
+17:46:05.758463 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 2, length 64
+17:46:05.758495 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 2, length 64
+17:46:06.758509 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 3, length 64
+17:46:06.758542 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 3, length 64
+17:46:07.758624 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 4, length 64
+17:46:07.758673 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 4, length 64
+17:46:08.758741 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 5, length 64
+17:46:08.758786 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 5, length 64
+17:46:09.758832 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 6, length 64
+17:46:09.758871 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 6, length 64
+17:46:10.758939 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 7, length 64
+17:46:10.758981 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 7, length 64
+17:46:11.759065 IP 192.214.0.15 > overcloud-controller-0.localdomain: ICMP echo request, id 22785, seq 8, length 64
+17:46:11.759089 IP overcloud-controller-0.localdomain > 192.214.0.15: ICMP echo reply, id 22785, seq 8, length 64
+
+
+To do:
+
+generate dockerfiles for OSPD12 as well and update the document
+
+create two empty lists, one to store whole path and one to store only dirs
+know the files and store them in path list
+get the last / and remove the text after it
+store the remaining value to a variable
+add it to list if it is not present
+go through the list and create the dirs
+and harlink the files from original path to this tmp path
+
+
+
+Add how to handle upgrade scenarios
+Review for Lbaas
+
+
+
+Done:
+Test symlink
+Remove Version from dockerfiles and change it to namespace
+Create neutron-server dockerfile as well
+Remove DockerImageNames
+Add prefix
+Test Local and Remote for Centos and merge centos
+Add methods for centos based deploment
+In the code itself based on distribution add file name
+Replace the hard coded file name with its variable
+Check uninstall package without its dependencies
+Create FS doc for AVRS
+Change code to handle applying diff
+Change image patching script
+Change the environment files
+Change /home/stack to get_path
+Move checking version to while generating dockerfiles
+remote images_cmd to env_file
+remove copying repo twice
+uncomment pushing
+add env file as param and image file as well
+copying image to undercloud not overcloud
+for configure boot take the nodes uuid
+make sure openstack commands are being run as stack user
+create templates for docker-regsitry and node-info
+Add check for status and repo names
+automate configuring insecure registry
+add option for what need to be deployed
