@@ -3,8 +3,8 @@ from create_packet import create_packet
 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-server_1 = ('localhost', 7754)
-s.bind(server_1)
+server_2 = ('localhost', 7754)
+s.bind(server_2)
 msg="ok"
 reply=msg.encode('utf-8')
 recv_seq_num = []
