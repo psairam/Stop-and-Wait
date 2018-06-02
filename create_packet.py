@@ -4,6 +4,7 @@ from struct import unpack
 class create_packet():
 
     def calc_checksum(self, packet):
+
         total = 0
 
         # Add up 16-bit words
@@ -13,7 +14,7 @@ class create_packet():
 
         # Add any left over byte
         if len(packet) % 2:
-            total += ord(packet[-1]) << 8
+            total += packet[-1] << 8
 
         # Fold 32-bits into 16-bits
         total = (total >> 16) + (total & 0xffff)

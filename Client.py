@@ -63,7 +63,6 @@ class ClientThreads(Thread):
             self.socket.settimeout(5)
             data, ser = self.socket.recvfrom(1024)
             recv_data = data.decode('utf-8')
-            print(recv_data)
             if recv_data == "ok":
                 self.send_byte[server] = recv_data
 
@@ -86,7 +85,6 @@ class ClientThreads(Thread):
             print("waiting for reply from ",receiving_server)
             self.socket.settimeout(5)
             data, ser = self.socket.recvfrom(1024)
-            print(data, self.msg_ack_unpack_format)
             ack = self.packet.unpack_header(self.msg_ack_unpack_format, data)
             if ack[-1] == 43690:
                 print("Ack received")
@@ -102,7 +100,6 @@ class ClientThreads(Thread):
             self.socket.sendto(end_message, server)
             self.socket.settimeout(5)
             data, ser = self.socket.recvfrom(1024)
-            print("end of msg ack ",data)
             recv_data = data.decode('utf-8')
             if recv_data == "ok":
                 self.send_byte[end_message] = "sent"

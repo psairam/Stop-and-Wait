@@ -1,3 +1,4 @@
+import random
 import socket
 from create_packet import create_packet
 
@@ -19,7 +20,6 @@ def get_byte_size(reply):
     format_for_packet = "!iHH" + real_byte_size + 's'
     return format_for_packet
 
-count = 0
 unpack_format = get_byte_size(reply)
 
 with open('server_3.txt', 'w') as f:
@@ -31,7 +31,6 @@ with open('server_3.txt', 'w') as f:
             break
         else:
             checksum, seq_num, field, original_msg = packet.get_checksum_seq_num(unpack_format, data)
-            print(len(original_msg))
             if checksum == 0:
                 print("checksum is correct")
 
@@ -40,13 +39,13 @@ with open('server_3.txt', 'w') as f:
                     ack = packet.pack_header(ack_format, seq_num=seq_num, ack=0, field=43690)
                     s.sendto(ack, client)
                 else:
+                    probability = round(random.random(), 2)
                     recv_seq_num.append(seq_num)
                     f.write(original_msg)
-                    if count!=6 :
+                    if probability!=0.6 :
                         ack = packet.pack_header(ack_format, seq_num=seq_num, ack=0, field=43690)
                         print("sending ack to ",client)
                         s.sendto(ack,client)
-                    count+=1
             else:
                 print("Checksum is wrong discarding the packet")
                 continue
